@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <title>CONSULTA DE DOMÍNIO - REGISTRO BRASIL</title>
+  </head>
+  <body>
+    <main class="pageContainer">
+      <aside class="infosAside">
+        <section class="titleContainer">
+          <p class="subtitle">
+            verifique se seu domínio já foi registrado no Brasil
+          </p>
+          <p class="label">
+            digite o domínio para consultar<br />
+            suas informações
+          </p>
+        </section>
+        <section class="searchContainer">
+          <form class="searchInputContainer" id="serachDomainForm">
+            <input
+              class="searchInput"
+              type="text"
+              placeholder="domínio"
+              id="domainInput"
+              required
+            />
+            <button type="submit" class="submitButton">consultar</button>
+          </form>
+          <h4 class="errorMessage" id="errorMessage" />
+        </section>
+      </aside>
+      <aside class="resultContainer" id="result" />
+    </main>
+  </body>
+  <script src="./index.js"></script>
+</html>
