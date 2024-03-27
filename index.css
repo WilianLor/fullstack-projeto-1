@@ -24,7 +24,8 @@ body {
   align-items: center;
   justify-content: center;
   overflow-x: auto;
-  height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
 .pageContainer {
@@ -36,7 +37,7 @@ body {
   margin: auto auto;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .pageContainer aside {
@@ -73,7 +74,7 @@ body {
 }
 
 .submitButton,
-.resultContainer > a {
+.resultContainer > div > a {
   background: #ff5043;
   color: white;
   padding: 0.75rem;
@@ -95,7 +96,7 @@ body {
 }
 
 .submitButton:hover,
-.resultContainer > a:hover {
+.resultContainer > div > a:hover {
   background-color: rgba(255, 80, 67, 0.75);
 }
 
@@ -110,11 +111,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 2rem;
+}
+
+.resultContainer > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
   flex-direction: column;
 }
 
-.resultContainer > p {
+.resultContainer > div > p {
   font-weight: 900;
   font-size: 3rem;
   text-wrap: wrap;
@@ -123,7 +133,7 @@ body {
   text-align: center;
 }
 
-.resultContainer > div {
+.resultContainer > div > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,25 +141,19 @@ body {
   gap: 2rem;
 }
 
-.resultContainer > div > div > p:nth-child(1) {
+.resultContainer > div > div > div > p:nth-child(1) {
   text-align: center;
   font-weight: 600;
 }
 
 @media (max-width: 840px) {
-  .pageContainer {
-    flex-direction: column;
-    margin-top: 2;
-    margin-bottom: 2;
-  }
-
   .subtitle {
     font-size: 3rem;
     line-height: 3.75rem;
   }
 
-  .resultContainer > div {
-    gap: 1.75rem;
+  .resultContainer > div > p {
+    font-size: 2rem;
   }
 }
 
@@ -159,7 +163,7 @@ body {
     line-height: 2.5rem;
   }
 
-  .resultContainer > div {
+  .resultContainer > div > div {
     gap: 1.5rem;
   }
 }

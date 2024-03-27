@@ -2,10 +2,10 @@ const resultContainer = document.getElementById("result");
 const searchForm = document.getElementById("serachDomainForm");
 const domainInput = document.getElementById("domainInput");
 
+const domains = [];
+
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
-  resultContainer.innerHTML = "";
 
   const domain = domainInput.value.replace(/\s/g, "");
 
@@ -15,46 +15,59 @@ searchForm.addEventListener("submit", async (event) => {
 
   const data = await response.json();
 
-  const fnqdText = document.createElement("p");
-  fnqdText.innerHTML = data.fqdn;
-
-  const infosContainer = document.createElement("div");
-
-  const expiresAtInfoContainer = document.createElement("div");
-
-  const expiresAtLabel = document.createElement("p");
-  expiresAtLabel.innerHTML = "expira em";
-
-  const expiresText = document.createElement("p");
-  expiresText.innerHTML = isStatusRegistred(data.status)
-    ? formatDate(new Date(data["expires-at"]))
-    : "-";
-
-  expiresAtInfoContainer.appendChild(expiresAtLabel);
-  expiresAtInfoContainer.appendChild(expiresText);
-  infosContainer.appendChild(expiresAtInfoContainer);
-
-  const statusInfoContainer = document.createElement("div");
-
-  const statusLabel = document.createElement("p");
-  statusLabel.innerHTML = "status";
-
-  const statusText = document.createElement("p");
-  statusText.innerHTML = formatStatus(data.status);
-
-  statusInfoContainer.appendChild(statusLabel);
-  statusInfoContainer.appendChild(statusText);
-  infosContainer.appendChild(statusInfoContainer);
-
-  const registroBrLink = document.createElement("a");
-  registroBrLink.href = `https://registro.br/busca-dominio/?fqdn=${domain}`;
-  registroBrLink.innerHTML = "registro.br";
-  registroBrLink.target = "_blank";
-
-  resultContainer.appendChild(fnqdText);
-  resultContainer.appendChild(infosContainer);
-  resultContainer.appendChild(registroBrLink);
+  domains.push(data);
+  renderDomains();
 });
+
+const renderDomains = () => {
+  resultContainer.innerHTML = "";
+
+  domains.reverse().forEach((data) => {
+    const result = document.createElement("div");
+
+    const fnqdText = document.createElement("p");
+    fnqdText.innerHTML = data.fqdn;
+
+    const infosContainer = document.createElement("div");
+
+    const expiresAtInfoContainer = document.createElement("div");
+
+    const expiresAtLabel = document.createElement("p");
+    expiresAtLabel.innerHTML = "expira em";
+
+    const expiresText = document.createElement("p");
+    expiresText.innerHTML = isStatusRegistred(data.status)
+      ? formatDate(new Date(data["expires-at"]))
+      : "-";
+
+    expiresAtInfoContainer.appendChild(expiresAtLabel);
+    expiresAtInfoContainer.appendChild(expiresText);
+    infosContainer.appendChild(expiresAtInfoContainer);
+
+    const statusInfoContainer = document.createElement("div");
+
+    const statusLabel = document.createElement("p");
+    statusLabel.innerHTML = "status";
+
+    const statusText = document.createElement("p");
+    statusText.innerHTML = formatStatus(data.status);
+
+    statusInfoContainer.appendChild(statusLabel);
+    statusInfoContainer.appendChild(statusText);
+    infosContainer.appendChild(statusInfoContainer);
+
+    const registroBrLink = document.createElement("a");
+    registroBrLink.href = `https://registro.br/busca-dominio/?fqdn=${data.fqdn}`;
+    registroBrLink.innerHTML = "registro.br";
+    registroBrLink.target = "_blank";
+
+    result.appendChild(fnqdText);
+    result.appendChild(infosContainer);
+    result.appendChild(registroBrLink);
+
+    resultContainer.append(result);
+  });
+};
 
 const isStatusRegistred = (status) => {
   return status === "REGISTERED";
