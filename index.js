@@ -1,6 +1,7 @@
 const resultContainer = document.getElementById("result");
 const searchForm = document.getElementById("serachDomainForm");
 const domainInput = document.getElementById("domainInput");
+const error = document.getElementById("error");
 
 const domains = [];
 
@@ -8,6 +9,12 @@ searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const domain = domainInput.value.replace(/\s/g, "");
+
+  if (!domain) {
+    renderErrorMessage("Por favor insira um dominio");
+
+    return;
+  }
 
   const response = await fetch(
     `https://brasilapi.com.br/api/registrobr/v1/${domain}`
@@ -88,4 +95,9 @@ const formatDate = (date) => {
   if (month < 10) month = "0" + month;
 
   return day + "/" + month + "/" + year;
+};
+
+const renderErrorMessage = (message = "") => {
+  console.log("chamando");
+  error.innerHTML = message;
 };

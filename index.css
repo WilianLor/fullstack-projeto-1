@@ -59,7 +59,7 @@ body {
   gap: 1rem;
 }
 
-.titleContainer > p {
+.titleContainer>p {
   text-wrap: wrap;
 }
 
@@ -74,7 +74,7 @@ body {
 }
 
 .submitButton,
-.resultContainer > div > a {
+.resultContainer>div>a {
   background: #ff5043;
   color: white;
   padding: 0.75rem;
@@ -95,8 +95,13 @@ body {
   border: 1px solid lightgray;
 }
 
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .submitButton:hover,
-.resultContainer > div > a:hover {
+.resultContainer>div>a:hover {
   background-color: rgba(255, 80, 67, 0.75);
 }
 
@@ -115,7 +120,7 @@ body {
   gap: 2rem;
 }
 
-.resultContainer > div {
+.resultContainer>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +129,7 @@ body {
   flex-direction: column;
 }
 
-.resultContainer > div > p {
+.resultContainer>div>p {
   font-weight: 900;
   font-size: 3rem;
   text-wrap: wrap;
@@ -133,7 +138,7 @@ body {
   text-align: center;
 }
 
-.resultContainer > div > div {
+.resultContainer>div>div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,9 +146,13 @@ body {
   gap: 2rem;
 }
 
-.resultContainer > div > div > div > p:nth-child(1) {
+.resultContainer>div>div>div>p:nth-child(1) {
   text-align: center;
   font-weight: 600;
+}
+
+#error{
+  color:#ff5043
 }
 
 @media (max-width: 840px) {
@@ -152,7 +161,7 @@ body {
     line-height: 3.75rem;
   }
 
-  .resultContainer > div > p {
+  .resultContainer>div>p {
     font-size: 2rem;
   }
 }
@@ -163,7 +172,7 @@ body {
     line-height: 2.5rem;
   }
 
-  .resultContainer > div > div {
+  .resultContainer>div>div {
     gap: 1.5rem;
   }
 }
