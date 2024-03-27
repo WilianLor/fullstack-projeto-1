@@ -7,7 +7,7 @@ searchForm.addEventListener("submit", async (event) => {
 
   resultContainer.innerHTML = "";
 
-  const domain = domainInput.value;
+  const domain = domainInput.value.replace(/\s/g, "");
 
   const response = await fetch(
     `https://brasilapi.com.br/api/registrobr/v1/${domain}`
