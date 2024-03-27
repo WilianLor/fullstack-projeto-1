@@ -84,6 +84,7 @@ body {
 
 .searchInputContainer {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -152,10 +153,10 @@ body {
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 440px) {
   .subtitle {
-    font-size: 2.5rem;
-    line-height: 3.25rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   .resultContainer > div {
